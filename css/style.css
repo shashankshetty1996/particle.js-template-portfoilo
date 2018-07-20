@@ -83,7 +83,10 @@ header #particles-js {
 
 #banner ul.social {
   list-style: none;
-  margin: 2rem auto;
+  margin: 1rem auto;
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  grid-column-gap: 50px;
 }
 
 #banner .social li {
@@ -198,6 +201,9 @@ section.section h1 {
   }
   #banner p {
     padding: 1.5rem 1rem;
+  }
+  #banner ul.social {
+    margin: 2rem auto;
   }
   #banner .social li a {
     margin: 2em 1em;
