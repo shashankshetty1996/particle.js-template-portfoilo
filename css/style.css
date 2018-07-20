@@ -1,0 +1,218 @@
+@import url("https://fonts.googleapis.com/css?family=Roboto:100,400,700");
+* {
+  margin: 0;
+  padding: 0;
+  border: 0;
+  box-sizing: border-box;
+}
+
+html,
+body {
+  font-family: "Roboto", sans-serif;
+}
+
+header {
+  height: 100vh;
+  width: 100%;
+  background-image: url("https://images.pexels.com/photos/265127/pexels-photo-265127.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940");
+  background-attachment: fixed;
+  background-position: left;
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-color: rgba(0, 0, 0, 0.2);
+}
+
+header #particles-js {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  top: 3em;
+}
+
+.container {
+  width: 80%;
+  margin: auto;
+}
+
+.navbar {
+  display: none;
+}
+
+#banner {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  color: #fff;
+  display: grid;
+  align-self: center;
+}
+
+/* Make sure that parent element has display: grid property */
+
+.center {
+  align-self: center;
+  justify-self: center;
+  text-align: center;
+}
+
+#banner h1 {
+  font-size: 1.5rem;
+}
+
+#banner .typing h1 {
+  font-size: 2.5rem;
+  font-weight: 100;
+  margin: 0.5rem auto;
+}
+
+#banner .typing span::after {
+  content: "";
+  position: absolute;
+  width: 0.25rem;
+  height: 2.5rem;
+  margin-left: 0.25rem;
+  background-color: #fff;
+  animation: 0.5s blink step-end infinite;
+}
+
+#banner p {
+  padding: 0.5rem;
+  font-weight: 100;
+}
+
+#banner ul.social {
+  list-style: none;
+  margin: 2rem auto;
+}
+
+#banner .social li {
+  display: inline-block;
+}
+
+#banner .social li a {
+  text-decoration: none;
+  color: inherit;
+  margin: 1em 0.5em;
+  padding: 0.5em;
+  cursor: pointer;
+}
+
+#banner .social li:nth-child(1) a:hover {
+  color: #25d366;
+}
+
+#banner .social li:nth-child(2) a:hover {
+  color: #410093;
+}
+
+#banner .social li:nth-child(3) a:hover {
+  color: #3b5999;
+}
+
+#banner .social li:nth-child(4) a:hover {
+  color: #e4405f;
+}
+
+#banner .social li a i.fab {
+  font-size: 2em;
+}
+
+section.section {
+  padding: 3rem 2rem;
+  text-align: center;
+}
+
+section.section:nth-child(even) {
+  background-color: #fff;
+  color: #000;
+}
+
+section.section:nth-child(odd) {
+  background-color: #000;
+  color: #fff;
+}
+
+section.section h1 {
+  margin-bottom: 2rem;
+}
+
+/* CSS Property above tablet screen */
+
+@media only screen and (min-width: 48em) {
+  .container {
+    width: 80vw;
+    margin: auto;
+  }
+  header {
+    background-position: center;
+  }
+  .navbar {
+    position: fixed;
+    width: 100vw;
+    height: 3em;
+    background-color: #000;
+    color: #fff;
+    display: grid;
+    grid-template-columns: 10% 20% auto 10%;
+    grid-template-areas: ". brand nav .";
+    border-radius: 5px;
+    z-index: 100;
+  }
+  .navbar .brand {
+    grid-area: brand;
+    line-height: 3em;
+    justify-self: center;
+    cursor: pointer;
+  }
+  .navbar .nav {
+    grid-area: nav;
+    justify-self: end;
+    list-style: none;
+  }
+  .navbar .nav li {
+    display: inline-block;
+    line-height: 3em;
+    margin: 0;
+    transition: all 0.5s ease-in-out;
+  }
+  .navbar .nav li:hover {
+    background-color: #fff;
+    color: #000;
+  }
+  .nav li a {
+    display: block;
+    padding: 0 1.5em;
+    text-decoration: none;
+    color: inherit;
+  }
+  #banner h1 {
+    font-size: 1.5rem;
+  }
+  #banner .typing h1 {
+    font-size: 4rem;
+  }
+  #banner .typing span::after {
+    height: 4rem;
+    margin-left: 0.5rem;
+  }
+  #banner p {
+    padding: 1.5rem 1rem;
+  }
+  #banner .social li a {
+    margin: 2em 1em;
+    padding: 1em;
+  }
+}
+
+/* Animations */
+
+@keyframes blink {
+  from,
+  to {
+    background-color: transparent;
+  }
+  50% {
+    background-color: #fff;
+  }
+}
