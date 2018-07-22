@@ -46,7 +46,26 @@ function app() {
     // Clear the next content
     span.textContent = '';
   }, typingSpeed);
-};
 
-// Disable all the a tags
-document.querySelectorAll('a').forEach((atag) => atag.addEventListener('click', (e) => e.preventDefault()));
+  // Toggle Navigation Function
+  function toggleMenu() {
+    let nav = document.querySelector('nav');
+    let icon = document.querySelector('#toggle-nav i');
+
+    // Toggling active class
+    nav.classList.toggle('active');
+
+    // Toggling Menu Icon
+    if (icon.classList.contains('fa-bars')) {
+      icon.classList.replace('fa-bars', 'fa-times');
+    } else {
+      icon.classList.replace('fa-times', 'fa-bars');
+    }
+  }
+
+  // Toggle Navigation
+  document.querySelector('#toggle-nav').addEventListener('click', toggleMenu);
+
+  // Disable all the a tags
+  document.querySelectorAll('a').forEach((atag) => atag.addEventListener('click', (e) => e.preventDefault()));
+};
