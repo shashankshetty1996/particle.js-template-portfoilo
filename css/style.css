@@ -178,6 +178,11 @@ section.section h1 {
     justify-self: center;
     cursor: pointer;
   }
+  .navbar .brand a {
+    text-decoration: none;
+    color: inherit;
+    font-size: 1.5em;
+  }
   .navbar .nav {
     grid-area: nav;
     justify-self: end;
