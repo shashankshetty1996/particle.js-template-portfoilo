@@ -128,11 +128,15 @@ function scrollReveal() {
   }
 
   document.querySelectorAll('a').forEach((atag) => atag.addEventListener('click', (e) => {
-    e.preventDefault();
-    console.log(123);
-    let hash = e.target.attributes[0].value.split('#')[1];
-    let offset = 3 * 16;
-    smoothScroll(hash, offset);
+    let src = e.target.attributes[0].value;
+    console.log(src);
+    console.log(src[0]);
+    if (src[0] === "#") {
+      e.preventDefault();
+      let hash = src.split('#')[1];
+      let offset = 3 * 16;
+      smoothScroll(hash, offset);
+    }
   }));
 
 }
