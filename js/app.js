@@ -129,8 +129,6 @@ function scrollReveal() {
 
   document.querySelectorAll('a').forEach((atag) => atag.addEventListener('click', (e) => {
     let src = e.target.attributes[0].value;
-    console.log(src);
-    console.log(src[0]);
     if (src[0] === "#") {
       e.preventDefault();
       let hash = src.split('#')[1];
