@@ -6,6 +6,7 @@ particlesJS.load("particles-js", "../assets/particlesjs-config.json", function (
 // typing
 "use strict";
 app();
+scrollReveal();
 
 function app() {
   // Targeted typing element
@@ -67,5 +68,71 @@ function app() {
   document.querySelector('#toggle-nav').addEventListener('click', toggleMenu);
 
   // Disable all the a tags
-  document.querySelectorAll('a').forEach((atag) => atag.addEventListener('click', (e) => e.preventDefault()));
+  // document.querySelectorAll('a').forEach((atag) => atag.addEventListener('click', (e) => e.preventDefault()));
 };
+
+function scrollReveal() {
+  // Get the current top location using self.pageYOffset
+  function currentYPosition() {
+    // Firefox, Chrome, Opera, Safari
+    if (self.pageYOffset) return self.pageYOffset;
+    // Internet Explorer 6 - standards mode
+    if (document.documentElement && document.documentElement.scrollTop)
+      return document.documentElement.scrollTop;
+    // Internet Explorer 6, 7 and 8
+    if (document.body.scrollTop) return document.body.scrollTop;
+    return 0;
+  }
+
+  // Get the position of element till where you want to scroll to: element.offsetTop
+  function elmYPosition(eID, offset) {
+    let elm = document.getElementById(eID);
+    let y = elm.offsetTop;
+    let node = elm;
+    while (node.offsetParent && node.offsetParent != document.body) {
+      node = node.offsetParent;
+      y += node.offsetTop;
+    }
+    return (y - offset);
+  }
+
+  // Do a for loop to reach there, which will be quite fast or use a timer to do smooth scroll till that position using window.scrollTo
+  function smoothScroll(eID, offset) {
+    let startY = currentYPosition();
+    let stopY = elmYPosition(eID, offset);
+    let distance = stopY > startY ? stopY - startY : startY - stopY;
+    if (distance < 100) {
+      scrollTo(0, stopY);
+      return;
+    }
+    let speed = Math.round(distance / 10);
+    if (speed >= 20) speed = 20;
+    let step = Math.round(distance / 25);
+    let leapY = stopY > startY ? startY + step : startY - step;
+    let timer = 0;
+    if (stopY > startY) {
+      for (let i = startY; i < stopY; i += step) {
+        setTimeout("window.scrollTo(0, " + leapY + ")", timer * speed);
+        leapY += step;
+        if (leapY > stopY) leapY = stopY;
+        timer++;
+      }
+      return;
+    }
+    for (let i = startY; i > stopY; i -= step) {
+      setTimeout("window.scrollTo(0, " + leapY + ")", timer * speed);
+      leapY -= step;
+      if (leapY < stopY) leapY = stopY;
+      timer++;
+    }
+  }
+
+  document.querySelectorAll('a').forEach((atag) => atag.addEventListener('click', (e) => {
+    e.preventDefault();
+    console.log(123);
+    let hash = e.target.attributes[0].value.split('#')[1];
+    let offset = 3 * 16;
+    smoothScroll(hash, offset);
+  }));
+
+}
